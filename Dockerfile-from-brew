@@ -68,3 +68,6 @@ RUN set -e; \
 
 # Print Installed Swift Version
 RUN swift --version
+RUN brew install mint
+RUN mint bootstrap
+

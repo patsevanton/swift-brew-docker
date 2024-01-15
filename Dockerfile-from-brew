@@ -66,8 +66,8 @@ RUN set -e; \
 # Print Installed Swift Version
 RUN swift --version
 RUN brew install mint
-RUN ls
-RUN pwd
-COPY Mintfile Mintfile
-RUN mint bootstrap
+RUN git clone https://github.com/realm/SwiftLint.git --depth 1 --branch 0.52.4
+RUN cd SwiftLint
+RUN swift build -c release --static-swift-stdlib
+RUN mv .build/x86_64-unknown-linux-gnu/release/swiftlint /usr/local/bin/
 

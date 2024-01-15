@@ -72,7 +72,7 @@ RUN swift --version
 #RUN ls /usr/local/bin/
 RUN brew info swiftlint
 RUN brew search swiftlint
-RUN brew search postgresql@
+RUN brew search swiftlint@
 RUN brew install swiftlint@0.52.4
 #RUN brew install sourcery@2.0.3
 #RUN brew install peripheryapp/periphery/periphery@2.15.0

@@ -18,6 +18,7 @@ RUN export DEBIAN_FRONTEND=noninteractive DEBCONF_NONINTERACTIVE_SEEN=true && su
     python3-lldb-13 \
     tzdata \
     zlib1g-dev \
+    curl \
     && sudo rm -r /var/lib/apt/lists/*
 
 # Everything up to here should cache nicely between Swift versions, assuming dev dependencies change little
@@ -52,9 +53,6 @@ RUN set -e; \
     SWIFT_WEBDIR="$SWIFT_WEBROOT/$SWIFT_BRANCH/$(echo $SWIFT_PLATFORM | tr -d .)$OS_ARCH_SUFFIX" \
     && SWIFT_BIN_URL="$SWIFT_WEBDIR/$SWIFT_VERSION/$SWIFT_VERSION-$SWIFT_PLATFORM$OS_ARCH_SUFFIX.tar.gz" \
     && SWIFT_SIG_URL="$SWIFT_BIN_URL.sig" \
-    # - Grab curl here so we cache better up above
-    && export DEBIAN_FRONTEND=noninteractive \
-    && sudo apt-get -q update && sudo apt-get -q install -y curl && sudo rm -rf /var/lib/apt/lists/* \
     # - Download the GPG keys, Swift toolchain, and toolchain signature, and verify.
     && export GNUPGHOME="$(mktemp -d)" \
     && curl -fsSL "$SWIFT_BIN_URL" -o swift.tar.gz "$SWIFT_SIG_URL" -o swift.tar.gz.sig \
@@ -63,8 +61,7 @@ RUN set -e; \
     # - Unpack the toolchain, set libs permissions, and clean up.
     && sudo tar -xzf swift.tar.gz --directory / --strip-components=1 \
     && sudo chmod -R o+r /usr/lib/swift \
-    && rm -rf "$GNUPGHOME" swift.tar.gz.sig swift.tar.gz \
-    && sudo apt-get purge --auto-remove -y curl
+    && rm -rf "$GNUPGHOME" swift.tar.gz.sig swift.tar.gz
 
 # Print Installed Swift Version
 RUN swift --version

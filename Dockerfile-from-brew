@@ -68,5 +68,6 @@ RUN swift --version
 RUN brew install mint
 RUN ls
 RUN pwd
+COPY Mintfile Mintfile
 RUN mint bootstrap
 

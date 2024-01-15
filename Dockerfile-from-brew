@@ -71,4 +71,5 @@ RUN swift --version
 #RUN sudo unzip /usr/local/bin/swiftformat_linux.zip -d /usr/local/bin/
 #RUN ls /usr/local/bin/
 RUN brew install mint
+COPY Mintfile Mintfile
 RUN mint bootstrap

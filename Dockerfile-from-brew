@@ -70,8 +70,11 @@ RUN swift --version
 ##ADD https://github.com/nicklockwood/SwiftFormat/releases/download/0.53.0/swiftformat_linux.zip /usr/local/bin/
 #RUN sudo unzip /usr/local/bin/swiftformat_linux.zip -d /usr/local/bin/
 #RUN ls /usr/local/bin/
+RUN brew info swiftlint
+RUN brew search swiftlint
+RUN brew search postgresql@
 RUN brew install swiftlint@0.52.4
-RUN brew install sourcery@2.0.3
-RUN brew install peripheryapp/periphery/periphery@2.15.0
-RUN brew install SwagGen@4.7.0
-RUN brew install swiftformat@0.51.15
+#RUN brew install sourcery@2.0.3
+#RUN brew install peripheryapp/periphery/periphery@2.15.0
+#RUN brew install SwagGen@4.7.0
+#RUN brew install swiftformat@0.51.15

@@ -65,9 +65,8 @@ RUN set -e; \
 
 # Print Installed Swift Version
 RUN swift --version
-RUN whereis curl
-RUN echo $PATH
-RUN export HOMEBREW_CURL_PATH=$(which curl)
 RUN brew install mint
+RUN ls
+RUN pwd
 RUN mint bootstrap
 

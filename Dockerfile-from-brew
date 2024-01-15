@@ -69,3 +69,4 @@ ADD https://github.com/realm/SwiftLint/releases/download/0.52.4/swiftlint_linux.
 RUN sudo unzip /usr/local/bin/swiftlint_linux.zip -d /usr/local/bin/
 ADD https://github.com/nicklockwood/SwiftFormat/releases/download/0.53.0/swiftformat_linux.zip /usr/local/bin/
 RUN sudo unzip /usr/local/bin/swiftformat_linux.zip -d /usr/local/bin/
+RUN ls /usr/local/bin/

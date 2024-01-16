@@ -70,6 +70,8 @@ RUN swift --version
 ##ADD https://github.com/nicklockwood/SwiftFormat/releases/download/0.53.0/swiftformat_linux.zip /usr/local/bin/
 #RUN sudo unzip /usr/local/bin/swiftformat_linux.zip -d /usr/local/bin/
 #RUN ls /usr/local/bin/
-RUN brew install mint
-COPY Mintfile Mintfile
-RUN mint bootstrap
+RUN brew install swiftlint
+RUN brew switch swiftlint 0.52.4
+#RUN brew install mint
+#COPY Mintfile Mintfile
+#RUN mint bootstrap
